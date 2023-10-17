@@ -9,7 +9,8 @@ public class Skeleton extends Monster{
     // Task 2.3
     public void encounter(WorldEntity traveller)
     {
-
+        this.setAwake(true);
+        world.battle(this,traveller);
     }
 
     

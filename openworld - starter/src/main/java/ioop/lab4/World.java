@@ -14,7 +14,16 @@ public class World {
 
     // Task 3.1
     public void battle(WorldEntity resident, WorldEntity traveller) {
-
+        while(resident.getCurrentHealth() > 0 | traveller.getCurrentHealth() > 0){
+            resident.attack(traveller);
+            if(traveller.getCurrentHealth() <=0){   //Traveller has been killed
+                break;
+            }
+            traveller.attack(resident);
+            if(resident.getCurrentHealth() <=0){ // Resident has been killed
+                break;
+            }
+        }
     }
 
     public int getxDimension() {

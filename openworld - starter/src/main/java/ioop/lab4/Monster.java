@@ -27,19 +27,37 @@ public class Monster extends TravellingWorldEntity{
                 this.stepTimer = 0;
             }
         }
+        else{
+            //do I need to set awake here?
+            encounter(world.getAdventurer());
+        }
         
     }
     
     //Task 2.2
     public void gainXP(int amount)
     {
+        while(this.getXp()+amount >= Math.pow(2, this.getLevel()) ){
+            this.level++;               //if current xp + amount you're gaining exceeds needed then lvl up
+            this.nextLevel++;
+            this.xp=0;
+            this.maxHealth+=10;
+        }
 
+        if(this.getXp()+amount <= Math.pow(2, this.getLevel())){    //do not level up, 
+            this.xp+=amount;
+        }
     }
     
     //Task 2.2 - this code is incomplete but note how the monster instance passes itself as a parameter to the battle method!
     public void encounter(WorldEntity traveller)
     {
+        if(!isAwake()){
+            setAwake(true);
+        }
+        else{
         world.battle(this,traveller);
+        }
         
     }
 
