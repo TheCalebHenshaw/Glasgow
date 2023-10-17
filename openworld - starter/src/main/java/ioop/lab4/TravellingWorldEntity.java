@@ -15,7 +15,7 @@ public class TravellingWorldEntity extends WorldEntity{
     // Task 2.1
     public void move(Coordinates vector)
     {
-
+        this.location.addCoordinates(vector);
     }
     
 }

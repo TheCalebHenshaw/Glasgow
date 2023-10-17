@@ -19,35 +19,27 @@ public class Coordinates {
 
     // Task 1.1
     public void addCoordinates(Coordinates vector) {
-        if(vector.getX()>0){
-            this.x+=vector.getX();
-        }                                       
-        if(vector.getY()>0){
-            this.y+=vector.getX();                  //Positive 
-        }
-        if(vector.getX()<0){                        //Negative
-            this.x-=vector.getX();
-        }
-        if(vector.getY()<0){
-            this.y-=vector.getY();
-        }
+        this.x +=vector.getX();
+        this.y +=vector.getY();
     }
 
     // Task 1.1
     public Coordinates findSafeMove(World world) {
+        int currentX = this.x;
+        int currentY= this.y;
         int xbound = world.getxDimension();
         int ybound = world.getyDimension();
 
-        if(x+1 < xbound){
+        if(currentX < xbound){
             return NORTH_VECTOR;
         }
-        if(y+1 < ybound){
+        if(currentY < ybound){
             return EAST_VECTOR;
         }
-        if(x-1 > xbound){
+        if(currentX > 0){
             return SOUTH_VECTOR;
         }
-        if(y-1 > ybound){
+        if(currentY > 0){
             return  WEST_VECTOR;
         }
         return STATIONARY;
@@ -55,22 +47,34 @@ public class Coordinates {
 
     // Task 1.2
     public Coordinates getNextStepTo(Coordinates destination) {
-        if(destination.getX()==x && destination.getY()==y){
-            return STATIONARY;
-        }
+        int xchange = destination.getX()-x;
+        int ychange = destination.getY()-y;
+
+
         int xdiff = Math.abs(destination.getX()-x);
         int ydiff = Math.abs(destination.getY()-y);
-
-        if(xdiff > ydiff){
-            return NORTH_VECTOR;
+        if(xchange==0 && ychange == 0){
+            return STATIONARY;
+        }
+                                                        //check if x is more favorable, or y is favorable
+        if(xdiff >= ydiff){
+            if(xchange > 0){
+                return NORTH_VECTOR;
             }
-        if(ydiff > xdiff){
-            return EAST_VECTOR;
+            else{
+                return SOUTH_VECTOR;
+            }
+            }
+        else{
+            if(ydiff > 0){
+                return EAST_VECTOR;
+            }
+            else{
+                return WEST_VECTOR;
+            }
         }
-        if(xdiff == ydiff){
-            return NORTH_VECTOR;
-        }
-    return STATIONARY;
+
+
   
     }
     // Task 1.3
@@ -79,18 +83,10 @@ public class Coordinates {
         {
             return false;
         }
-        try {
+
             Coordinates check = (Coordinates)obj;
-            if(check.getX()==x && check.getY()==y){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        catch (Exception e){
-            return false;
-        }
+            return this.x == check.getX() && this.y == check.getY();
+
 
         
         

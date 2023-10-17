@@ -20,16 +20,24 @@ public class WorldEntity {
 
     //Task 2.1
     public void takeDamage(Damage damage) {
-
+        int postAttackHP = currentHealth-damage.getAmount();
+        if(postAttackHP>0){
+            setCurrentHealth(postAttackHP);
+        }
+        else{
+            this.currentHealth = 0;
+            conscious = false;
+        }
     }
 
     // Task 2.1
     public void attack(WorldEntity traveller) {
+        traveller.takeDamage(this.attack);
     }
 
     // Task 2.1
     public void encounter(WorldEntity traveller) {
-
+        System.out.println("Encounter Seen");
     }
 
     public String getName() {

@@ -7,17 +7,26 @@ public class Monster extends TravellingWorldEntity{
     protected int xp=0;
     protected int level=1;
     protected int nextLevel=2;
+    private boolean awake;
     
     //Task2.2
     public Monster(String name, Coordinates location, int maxHealth, World world, Damage attack, int speed) {
         super(name, location, maxHealth, world, attack);
         this.speed=speed;
+        this.awake = false;
     }
 
     // Task 2.2
+
     public void takeTurn()
     {
- 
+        if(isAwake()){
+            incrementStep();
+            if(this.stepTimer==this.speed){
+                move(location.getNextStepTo(world.getAdventurer().getLocation()));              //move towards adventurer
+                this.stepTimer = 0;
+            }
+        }
         
     }
     
@@ -48,6 +57,9 @@ public class Monster extends TravellingWorldEntity{
 
     public int getXp() {
         return xp;
+    }
+    public void incrementStep(){
+        this.stepTimer+=1;
     }
 
     public int getLevel() {
