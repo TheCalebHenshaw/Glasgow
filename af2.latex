@@ -1,0 +1,346 @@
+%%%%% DO NOT EDIT HERE. SCROLL DOWN TO SEE THE SECTIONS, WHICH YOU HAVE TO EDIT %%%%%
+%%%%% make sure you add you tutorial group, name and student id (see lines 27, 31  and 35) %%%%% 
+\documentclass[answers,addpoints,11pt]{exam}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[margin=1in]{geometry}
+
+\marksnotpoints
+\pointsinrightmargin
+\bracketedpoints
+
+\newcommand{\sectionline}{%
+  \nointerlineskip \vspace{\baselineskip}%
+  \hspace{\fill}\rule{\linewidth}{2pt}\hspace{\fill}%
+  \par\nointerlineskip \vspace{\baselineskip}
+}
+
+\pagestyle{myheadings}
+\markright{AF2 - Assessed Exercise 2}
+
+\usepackage{pdfpages}
+\begin{document}
+ \thispagestyle{empty}
+\begin{flushright}
+{\bf 
+\vspace*{-2cm}
+\begin{tabular}{|r|l|} \hline
+Tutorial Group  & 
+%%%%% Enter your tutorial group below %%%%%
+LB07
+\\ \hline
+Name            & 
+%%%%% Enter your name below %%%%%
+Caleb Henshaw
+\\ \hline
+Student ID      & 
+%%%%% Enter your student ID below %%%%%
+2810458H
+\\\hline
+\end{tabular}}
+\end{flushright}
+\begin{figure}[!h]
+\centering
+\vspace*{-1.7cm}
+\includegraphics[scale=0.8]{af2_assessed_exercise2}
+\end{figure}
+
+\newpage
+  \thispagestyle{empty}
+  \vskip24pt
+  \begin{center}
+  {\huge\textbf{Algorithmic Foundations 2}}
+  \\[2ex] {\Large \textbf{Assessed Exercise 2}}
+  \end{center}
+  \vskip24pt
+  \sectionline
+  \noindent
+  {\large {\bf Notes for guidance}}
+  \begin{enumerate}
+    \item
+    This is the second of two assessed exercises. Each is worth 10\% of your final grade for this module. Your answers must be the result of your own individual efforts.
+	\item
+	Please use the latex template and submit your the generated pdf via moodle (do not submit the latex source file).
+	\item
+	Please ensure you have filled out your tutorial group, name and student id.
+	\item
+	{\bf Failure to follow the submission instructions will lead to a penalty for non-adherence to submission instructions of 2 bands}.
+    \item
+    As stated on the cover sheet deadline for completing this assessed exercise is {\bf 16:30 Monday November 20, 2023}.
+    \item
+    The exercise is marked out of 30 using the included marking scheme. Credit will be given for partial answers.
+  \end{enumerate}
+  \sectionline
+  \newpage
+  %%%%% QUESTIONS BEGIN HERE. PLEASE EDIT INDICATED SECTIONS %%%%%
+  \begin{questions}
+    \question[4]
+      Let $a$ and $b$ be integers and let $m$ be a positive integer.  Show that $a \equiv b \pmod{m}$ if and only if $a \pmod{m} = b \pmod{m}$. Explain your steps.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 1 GOES HERE >>>>>
+
+Assume $a \equiv b \pmod{m}$, meaning $m$ divides $(a - b)$.
+
+Express the congruence relation using the definition of remainder:
+
+\[ a \pmod{m} = b \pmod{m} \]
+
+This implies an equation: $a - b = km$ for some integer $k$.
+
+Using the property that adding or subtracting a multiple of $m$ does not change the remainder, conclude:
+
+\[ a \pmod{m} = b \pmod{m} \]
+
+
+Assume $a \pmod{m} = b \pmod{m}$, meaning $a$ and $b$ have the same remainder when divided by $m$.
+
+Express the equality using an equation: $a - b = km$ for some integer $k$.
+
+Recognize that this is the definition of $a \equiv b \pmod{m}$, where $m$ divides $(a - b)$.
+
+Conclude that $a \equiv b \pmod{m}$ based on the equality of remainders.
+      %%%%% YOUR SOLUTION TO QUESTION 1 ENDS HERE <<<<<
+    \end{solution}
+    
+    \vskip24pt
+    \question[2]
+    Using the Euclidean Algorithm, find $\gcd(1529,14038)$. Show your working.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 2 BEGINS HERE >>>>>
+
+
+
+    \[
+    \begin{aligned}
+    &\text{Step 1} \quad 14038 = 9 \cdot 1529 + 157 \\
+    &\text{Step 2} \quad 1529 = 9 \cdot 157 + 76 \\
+    &\text{Step 3} \quad 157 = 2 \cdot 76 + 5 \\
+    &\text{Step 4} \quad 76 = 15 \cdot 5 + 1 \\
+    &\text{Step 5} \quad \gcd(1529, 14038) = 1 \quad (\text{Since the remainder is 1})
+    \end{aligned}
+    \]
+
+The greatest common divisor of 1529 and 14038 is 1.
+
+      %%%%% YOUR SOLUTION TO QUESTION 2 ENDS HERE <<<<<
+    \end{solution}
+    \question[5]
+    Using the universe of all students, write out the following argument using quantifiers, connectives, and symbols to stand for propositions as necessary, explaining which rules of inference are used for each step. 
+
+    \begin{quote}
+    ``All $\mathit{AF2}$ students are second years.  There exists a $\mathit{AF2}$ student from Glasgow.  Therefore, there is a second year student from Glasgow.''
+    \end{quote}
+    {\bf Note:} there can be more than one student from Glasgow and this must be reflected in the construction of your argument.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 3 BEGINS HERE >>>>>
+\begin{align*}
+        & S(x): \text{$x$ is a student.} \\
+& AF2(x): \text{$x$ is an AF2 student.} \\
+& Y(x): \text{$x$ is a second-year student.} \\
+& G(x): \text{$x$ is from Glasgow.}
+\end{align*}
+
+\textbf{Argument:}
+
+    \item \textbf{Premise 1:} "All AF2 students are second years."
+    \[ \forall x \in S, \ (AF(x) \land S(x)) \rightarrow Y(x) \]
+    Universal Instantiation
+
+    \item \textbf{Premise 2:} "There exists an AF2 student from Glasgow."
+    \[ \exists x \ (S(x) \land AF(x) \land G(x)) \]
+    Existential Instantiation
+
+    \item \textbf{Conclusion:} "Therefore, there is a second-year student from Glasgow."
+   \[ \exists x \ (S(x) \land Y(x) \land G(x)) \]
+    Modus Ponens (therefore)
+
+
+      %%%%% YOUR SOLUTION TO QUESTION 3 ENDS HERE <<<<<
+    \end{solution}
+    
+    \vskip24pt
+    \question[3]
+        
+    The $n {\times} n$ matrix $A$ is called a \emph{diagonal matrix} if $a_{i,j}=0$ for all $1 {\leq} i {\neq} j {\leq} n$.
+    \\ \\
+    Show that the product of two $n {\times} n$ diagonal matrices is diagonal and give an simple expression for the diagonal values of the product.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 4 BEGINS HERE >>>>>
+
+
+      When you multiply, if \(i\) does not equal \(j\), the product \(C_{ij}\) will always be zero. We can prove this by showing \(i=1\) and \(j=2\). The summation is 
+\[ C_{12} = \sum_{k=1}^{2} a_{1k} \cdot b_{k2} = a_{11} \cdot b_{12} + a_{12} \cdot b_{22}. \]
+
+Two diagonal matrices:
+\begin{align*}
+    & \text{The first matrix has diagonal elements of 2 and then 3:} \\
+    & \begin{bmatrix}
+        2 & 0 \\
+        0 & 3 \\
+    \end{bmatrix} \\
+    & \\
+    & \text{The second matrix has diagonal elements of 4 and 1:} \\
+    & \begin{bmatrix}
+        4 & 0 \\
+        0 & 1 \\
+    \end{bmatrix}
+\end{align*}
+Proving that off-diagonal positions in the product matrix are always zero (\(C_{12} = (2 \cdot 0) + (0 \cdot 1) = 0\)). 
+
+Now, to prove the product works for diagonal positions (\(i = j\)), calculate an element from \(C_{11}\). The sum is 
+\[ C_{11} = \sum_{k=1}^{2} a_{1k} \cdot b_{k1} = a_{11} \cdot b_{11} + a_{12} \cdot b_{21}. \]
+This comes out to \((2 \cdot 4) + (0 \cdot 0) = 8\).
+Increasing the size will not affect calculations because the formula scales with n. 
+The sum is: \( \sum_{k=1}^{n} a_k \)
+\[ C_{ij} = \sum_{k=1}^{n} a_{ik} \cdot b_{kj} = a_{i1} \cdot b_{1j} + a_{i2} \cdot b_{2j} + \dots + a_{in} \cdot b_{nj} \]
+      %%%%% YOUR SOLUTION TO QUESTION 4 ENDS HERE <<<<<
+    \end{solution}
+    \vskip24pt
+    \question[5]
+
+    Show that $\sqrt{n}$ is irrational if $n$ is a positive integer that is not a perfect square.
+
+    {\bf Note}: an integer $n$ is a perfect square if $n=k^2$ for some integer $k$.  
+    {\bf Hint:} use a proof by contradiction, together with the Fundamental Theorem of Arithmetic considering the powers of the primes in the product.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 5 BEGINS HERE >>>>>
+Assume that \(\sqrt{n} = \frac{p}{q}\) and that \(p, q\) are integers. By the Fundamental Theorem of Arithmetic, any integer can be written as a product of primes. Look now at the prime factors of \(p\) and \(q\). 
+As a fraction: \(\frac{a_1 \cdot a_2 \cdot a_3 \cdot a_4 \cdot \ldots \cdot a_m}{b_1 \cdot b_2 \cdot b_3 \cdot \ldots \cdot b_k}\). These are the prime factors that make up \(p\) and \(q\). 
+
+While this is in reduced form, \(a_m\) cannot equal \(b_k\). Square \(n\) to make \(n = \frac{p^2}{q^2}\). To ensure that \(n\) is not a perfect square, ensure that \(q\) does not equal 1. 
+
+
+By this, we can see that \(\frac{p}{q}\) is not an integer because \(\frac{p}{q}\) is a fraction, not an integer, as the theorem says they are not the same integer. This means that \(n\) is equal to something that is not an integer. The contradiction made was in the assumption that \(\frac{p}{q}\) was rational. By contradiction, this means that \(\sqrt{n}\) is irrational.
+      %%%%% YOUR SOLUTION TO QUESTION 5 ENDS HERE <<<<<
+    \end{solution}
+    \question[5]
+    The Fibonacci numbers $f_0, f_1, f_2,\dots$ and Lucas numbers $l_0, l_1, l_2, \dots$ are defined by the equations:
+    \begin{itemize}
+    \item
+    $f_0=0$, $f_1=1$ and $f_n = f_{n-1} {+} f_{n-2}$ for all $n\geq 2$;
+    \item
+    $l_0=2$, $l_1=1$ and $l_n = l_{n-1} {+} l_{n-2}$ for all $n\geq 2$
+    \end{itemize}
+    respectively. Prove that $f_{n} {+} f_{n+2} = l_{n+1}$ for all $n\geq 1$.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 6 BEGINS HERE >>>>>
+\textbf{Base Case (\(n = 1\)):}
+\[
+f_1 + f_3 = 1 + 2 = 3
+\]
+\[
+l_2 = l_1 + l_0 = 1 + 2 = 3
+\]
+The base case holds.
+
+\textbf{Inductive Step:}
+Assume that for some arbitrary \(k\):
+\[
+f_k + f_{k+2} = l_{k+1}
+\]
+
+Now prove it for \(k+1\):
+\[
+f_{k+1} + f_{k+3}
+\]
+
+Using the definition of Fibonacci numbers and Lucas numbers:
+\[
+f_{k+1} = f_k + f_{k-1}
+\]
+\[
+f_{k+3} = f_{k+2} + f_{k+1}
+\]
+
+Now, substitute these into the expression \(f_{k+1} + f_{k+3}\):
+\[
+f_{k+1} + f_{k+3} = (f_k + f_{k-1}) + (f_{k+2} + f_{k+1})
+\]
+
+Combine like terms:
+\[
+f_{k+1} + f_{k+3} = f_{k+2} + 2f_{k+1} + f_k
+\]
+
+Now use the assumption that \(f_k + f_{k+2} = l_{k+1}\):
+\[
+f_{k+1} + f_{k+3} = l_{k+1} + 2f_{k+1} + f_k
+\]
+
+Using the definition of Lucas numbers, \(l_{k+2} = l_{k+1} + l_k\):
+\[
+f_{k+1} + f_{k+3} = l_{k+2} + f_{k+1}
+\]
+
+Finally substitute \(l_{k+2}\) back in:
+\[
+f_{k+1} + f_{k+3} = l_{k+1} + l_k + f_{k+1}
+\]
+
+Combine like terms:
+\[
+f_{k+1} + f_{k+3} = l_{k+1} + l_{k+2}
+\]
+
+This completes the inductive step.
+
+\textbf{Conclusion:}
+The identity \(f_{n} + f_{n+2} = l_{n+1}\) is proven for all \(n \geq 1\)
+      %%%%% YOUR SOLUTION TO QUESTION 6 ENDS HERE >>>>>
+    \end{solution}
+    \vskip24pt
+    \question
+    The set of bit strings $\mathbb{B}^*$ are be defined recursively by:
+    \begin{itemize}
+    \item
+    $\varepsilon \in \mathbb{B}^*$ (where $\varepsilon$ is the empty string);
+    \item
+    if $w \in \mathbb{B}^*$ and $x \in \{0,1\}$, then $wx \in \mathbb{B}^*$. 
+    \end{itemize}
+    We can define concatenation of two bit strings denoted ${+}{+}$, recursively as follows:
+    \begin{itemize}
+    \item
+    if $w \in \mathbb{B}^*$, then $w {+}{+} \varepsilon = w$;
+    \item
+    if $w,v \in \mathbb{B}^*$ and $x \in \{0,1\}$, then $w{+}{+}(vx) = (w{+}{+}v)x$. 
+    \end{itemize}
+    {\bf Notice the difference in the above recursive definitions and those given for strings in the lectures. Then consider how this will influence how to prove properties of bit strings by structural induction.}
+    \begin{parts}
+    \part[2]
+    Give a recursive definition of the function $\mathtt{ones} : \mathbb{B}^* \rightarrow \mathbb{N}$ which counts the number of ones in a bit string.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 7a BEGINS HERE >>>>>
+\begin{align*}
+\text{Base Case:} \quad & \text{ones}(\varepsilon) = 0 \quad \text{(the number of ones in the empty string is zero)} \\
+    \\
+\text{Recursive Case:} \quad & \text{For } w \in B^* \text{ and } x \in \{0, 1\}, \\
+    & \quad \text{ones}(wx) = \begin{cases}
+        \text{ones}(w) + 1 & \text{if } x = 1 \\
+        \text{ones}(w) & \text{if } x = 0
+    \end{cases} \\
+    \\
+    \text{Inductive Step:} \quad & \text{For any bit string } w \in B^* \text{ and any } x \in \{0, 1\}, \\
+    & \quad \text{ones}(wx) = \text{ones}(w) + x
+\end{align*}
+      %%%%% YOUR SOLUTION TO QUESTION 7a ENDS HERE >>>>>
+    \end{solution}
+    \part[4]
+    Use structural induction to prove that $\mathtt{ones}(w{+}{+}v) = \mathtt{ones}(w) + \mathtt{ones}(v)$ for all $w, v \in \mathbb{B}^*$.
+    \begin{solution}
+      %%%%% YOUR SOLUTION TO QUESTION 7b BEGINS HERE >>>>>
+Proof by Structual Induction:
+\begin{align*}
+    \text{Base Case:} \quad & \text{ones}(\varepsilon ++ \varepsilon) = \text{ones}(\varepsilon) + \text{ones}(\varepsilon) \\
+    \\
+    \text{Inductive Step:} \quad & \text{Assume } \text{ones}(w ++ v) = \text{ones}(w) + \text{ones}(v) \text{ for all } w, v \in B^*. \\
+    & \text{Now, consider } w' = w ++ x \text{ and any } v' \in B^*. \\
+    & \text{Show that } \text{ones}(w' ++ v') = \text{ones}(w) + \text{ones}(x) + \text{ones}(v'). \\
+    & \quad \text{(Apply inductive hypothesis and simplify)} \\
+    \\
+    \text{Conclusion:} \quad & \text{By structural induction, the property holds for all } w, v \in B^*.
+\end{align*}
+    
+      %%%%% YOUR SOLUTION TO QUESTION 7b ENDS HERE >>>>>
+    \end{solution}
+    \end{parts}
+  \end{questions}
+\end{document}
